@@ -8,15 +8,16 @@ export default defineConfig({
   workers: 1,
   reporter: 'html',
   globalSetup: '.auth/auth-setup.ts',
-  timeout: 90000,
+  timeout: 60000,
   use: {
     baseURL: 'https://petclinic.bondaracademy.com',
+    
     trace: 'on-first-retry',
     storageState: '.auth/user.json',
     extraHTTPHeaders: {
       'Authorization': `Bearer ${process.env.ACCESS_TOKEN}`
     },
-    actionTimeout: 10000,
+    actionTimeout: 120000,
     viewport: {height: 1080, width: 1920}
   },
 
