@@ -44,7 +44,7 @@ test('Test Case 2: Cancel pet type update', async ({page}) => {
     await expect(page.getByRole('heading',{name:'Pet Types'})).toBeVisible()
     const thirdeditButton = page.getByRole('button',{name:'Edit'}).nth(2)
     await thirdeditButton.click()
-    const petNameInputField = await page.locator('#name') 
+    const petNameInputField = page.locator('#name') 
     await petNameInputField.click()
     await petNameInputField.clear()    
     await expect(page.locator('.help-block')).toHaveText('Name is required')
