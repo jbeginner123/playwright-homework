@@ -19,7 +19,7 @@ test ('Test Case 1: Validate selected specialties', async({page}) => {
     await page.getByRole('checkbox', {name: "radiology"}).uncheck()
     await expect(selectedSpecialities).toHaveText('surgery')   
     await page.getByRole('checkbox', {name: "dentistry"}).check()
-    await expect(page.locator('#vet_form .control-group .form-group .control-label')).toContainText('Specialties')
+    await expect(page.locator('[for="spec"]')).toContainText('Specialties')
     await expect(selectedSpecialities).toHaveText('surgery, dentistry')
 })
 
@@ -44,7 +44,7 @@ test ('Test Case 3: Unselect all specialties', async({page}) => {
     await page.getByRole('button',{name:'Veterinarians'}).click()
     await page.getByRole('link',{name:"All"}).click()
     await page.getByRole('button',{name:'Edit'}).nth(2).click() 
-    await expect(page.locator('#vet_form .control-group .form-group .control-label')).toContainText('Specialties')  
+    await expect(page.locator('[for="spec"]')).toContainText('Specialties')  
     const selectedSpecialities = page.locator('.selected-specialties') 
     await expect(selectedSpecialities).toHaveText('dentistry, surgery') 
     await selectedSpecialities.click()
